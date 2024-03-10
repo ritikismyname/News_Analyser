@@ -16,7 +16,7 @@ db_config = {
     'dbname': 'assignmentpy',
     'user': 'assignmentpy_user',
     'password': '6C1fFcmhXh1Woespyo9B4I3q63ATzvWN',
-    'host': 'dpg-cnmmsgen7f5s73d7qngg-a ',
+    'host': 'dpg-cnmmsgen7f5s73d7qngg-a',
     'port': '5432'
 }
 
