@@ -1,5 +1,11 @@
+
 from flask import Flask, render_template, request,url_for, session, redirect
-import psycopg2
+import psycopg2import requests
+from bs4 import BeautifulSoup
+import nltk
+from nltk import pos_tag
+from nltk.tokenize import sent_tokenize, word_tokenize
+from textblob import TextBlob
 from analyze_news import Analyze_news
 from authlib.integrations.flask_client import OAuth
 nltk.download('all')
