@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('static/background_news.jpg'); /* Replace 'background-image.jpg' with your actual image file */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adding shadow for contrast */
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button {
+            width: calc(100% - 22px); /* Subtract padding from width */
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            color: red;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .github-photo {
+            width: 50px; /* Reduced size */
+            border-radius: 50%;
+            margin: 10px auto; /* Centering the image */
+            display: block;
+            cursor: pointer; /* Cursor changes to pointer on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <a href="{{ url_for('github_login') }}">
+        <img class="github-photo" src="static/git_logo.png" alt="GitHub Logo"> 
+    </a>
+
+    {% if logged_in %}
+        {% if is_admin %}
+        {% else %}
+            <p>You are not an admin user.</p>
+        {% endif %}
+    {% else %}
+        <a href="{{ url_for('github_login') }}">Login with GitHub</a>
+    {% endif %}
+</div>
+
+</body>
+</html>

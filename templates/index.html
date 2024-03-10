@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>News Article Analysis</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Playfair Display", serif;
+    }
+
+    header {
+      background-color: silver;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      float: right;
+      margin-right: 10px;
+
+    }
+
+    .admin-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .admin-btn:hover {
+      background-color: #45a049;
+    }
+
+    .content {
+      text-align: center;
+      margin-top: 50px;
+      max-width: 600px;
+      margin:  auto;
+      padding: 20px;
+      background-image: url("static/background_news.jpg");
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+      margin-top: 35px;
+    }
+
+    .main-heading {
+      color: floralwhite;
+      text-shadow: 4px 4px 8px rgba(2, 2, 2, 0.5);
+      font-size: 40px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .input-item {
+      text-align: center;
+      background-color: whitesmoke;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: calc(100% - 22px);
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .submit-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #555;
+    }
+
+    .about {
+      text-align: left;
+      padding: 20px;
+      background-color: whitesmoke;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .about p {
+      color: blackness(67%);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+  .video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover; /* Optional: Fills viewport while maintaining aspect ratio */
+  }
+
+  </style>
+</head>
+<body>
+
+<video class="video-background" autoplay muted loop>
+  <source src="static/background_video.mp4" type="video/mp4">
+</video>
+
+<header>
+  <form action="/admin_login" method="post">
+    <button class="admin-btn" type="submit">Admin</button>
+  </form>
+</header>
+
+<div class="content">
+  <h1 class="main-heading">The Indian Express</h1>
+  <form action="/submit_url" method="post">
+    <label  for="url"></label>
+    <input class="input-item" placeholder="Enter News Article URL" type="text" id="url" name="url" required><br>
+    <button class="submit-btn" type="submit">Submit</button>
+  </form>
+
+  <div class="about">
+      <p>Access concise and insightful news analysis based on the URLs you provide. Our website delivers cleaned data and in-depth analysis sourced from The Indian Express, offering you a comprehensive understanding of the latest news topics. Stay informed effortlessly with our tailored news summaries.</p>
+  </div>
+</div>
+
+</body>
+</html>

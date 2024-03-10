@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Page</title>
+    <style>
+        body {
+            background-color: pink; /* Set the background color of the entire page to pink */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
+        
+        h1 {
+            text-align: center;
+            background-color: blue; /* Set the background color of the heading to blue */
+            color: white; /* Set the text color of the heading to white */
+            padding: 20px 0; /* Add padding to the heading for better appearance */
+            margin: 0; /* Remove default margin */
+        }
+        
+        .container {
+            background-color: pink; 
+            padding: 20px; 
+        }
+
+        .submission-container {
+            position: relative; 
+        }
+        .submission {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border: 1px solid #ccc; 
+            border-radius: 8px;
+            padding: 10px 25px 10px 10px;
+            position: relative; 
+            background-color: white;
+        }
+        .serial-number {
+            position: absolute;
+            left: -40px; 
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+        }
+        .url {
+            flex: 1;
+        }
+        .view-button {
+            margin-left: 10px;
+            padding: 4px 6px;
+        }
+        .submission-details {
+            display: none; /* Hide details by default */
+        }
+        .submission-details.active {
+            display: block; /* Show details when active */
+        }
+        .playfair-display-<uniquifier> {
+          font-family: "Playfair Display", serif;
+          font-optical-sizing: auto;
+          font-weight: <weight>;
+          font-style: normal;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Analysis Results</h1>
+    <div class="container">
+        <div class="submission-container">
+            <ul id="urlList">
+                {% for analysis in analysis_data %}
+                    <li class="submission">
+                        <span class="serial-number">{{ loop.index }}</span>
+                        <div class="url">{{ analysis.url_given }}</div>
+                        <button class="view-button">View</button>
+                        <div class="submission-details">
+                            <p>Cleaned Text: {{ analysis.cleaned_text }}</p>
+                            <p>Number of Sentences: {{ analysis.number_of_sentences }}</p>
+                            <p>Number of Words: {{ analysis.number_of_words }}</p>
+                            <p>Number of POS Tags: {{ analysis.number_of_pos_tags }}</p>
+                            <p>Sentiment Analysis: {{ analysis.sentiment_label }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to toggle visibility of each submission's details
+        var viewButtons = document.querySelectorAll('.view-button');
+        viewButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var details = this.parentElement.querySelector('.submission-details');
+                details.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
