@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template, request,url_for, session, redirect
-import psycopg2import requests
+import psycopg2
+import requests
 from bs4 import BeautifulSoup
 import nltk
 from nltk import pos_tag
